@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--    <meta charset="UTF-8">-->
+
+    <meta charset="ISO-8859-1">
+    <title>Medewerker</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid text-center" align="center">
+        <div><h2>Mederwerker List</h2></div>
+        <div><a th:href="@{/addnew}" class="btn btn-primary btn-sm mb-3" >Add Medewerker</a></div>
+
+        <div id="message" th:if="${message}" class="alert alert-success text-center">
+            [[${message}]]
+        </div>
+
+        <table class = "table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>voornaam</th>
+                    <th>achternaam</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="medewerker:${allemplist}">
+                    <td th:text="${medewerker.voornaam}"></td>
+                    <td th:text="${medewerker.achternaam}"></td>
+                    <td>
+                        <a th:href="@{/showFormForUpdate/{id}(id=${medewerker.id})}"
+                            class="btn btn-primary">Update</a>
+                        <a th:href="@{/deleteMedewerker/{id}(id=${medewerker.id})}"
+                           class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+<script type="text/javascript">
+
+    function MessageForCancel(){
+        const message = document.getElementById("message").value
+        // localStorage.
+    }
+
+</script>
+
+</html>
